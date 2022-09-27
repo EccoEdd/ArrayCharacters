@@ -13,6 +13,7 @@ namespace ArrayCharacters
             char[] letras = new char[0];
             int contador = -1;
             bool trabajo = true;
+
             do
             {
                 #region Acciones
@@ -68,55 +69,64 @@ namespace ArrayCharacters
                         #endregion
                         break;
                     case 'i':
+                        #region Insertar
+                        //Verifica si arreglo esta creado y o le queda espacio
                         if (contador < letras.Length && contador != -1)
                         {
-                            char [] valor = new char[1];
+                            #region InicializacionValores
+                            char[] valor = new char[1];
                             double numero = 0;
 
                             Console.WriteLine("Insertar Elemento");
                             char val = Convert.ToChar(Console.ReadLine());
+                            letras[contador] = val;
 
-                            //Saca Valor Ascii del nuevo caracter a insertar
-                            valor[0] = val;
-                            byte[] ASCIIvalues = Encoding.ASCII.GetBytes(valor);
+                            //Saca Valores ASCII elementos ya existentes
+                            byte[] ASCIIvalues1 = Encoding.ASCII.GetBytes(letras);
 
-                            for(int i = 0; i < valor.Length; i++)
+                            char g1;
+                            int j, i = 1;
+                            #endregion
+                            for (i = 1; i <= contador; i++)
                             {
-                                numero = Convert.ToInt32(ASCIIvalues[i]);
-                            }
-                            if (numero >= 90)
-                            {
-                                numero = (numero - 32) + 0.5;
-                            }
+                                
+                                g1 = letras[i];
+                                //Saca Valor Ascii del elemento guardado
 
-                            Console.WriteLine(numero);
-
-                            if (contador == 0)
-                            {
-                                letras[0] = val;
-                            }
-                            else if(contador > 0)
-                            {
-                                byte[] ASCIIvalues1 = Encoding.ASCII.GetBytes(letras);
-                                for (int i = 0; i < letras.Length; i++)
+                                #region ASCIIexistentes
+                                double numero2 = Convert.ToInt16(ASCIIvalues1[i - 1]);
+                                if (numero2 > 90)
                                 {
-                                    double numero2 = Convert.ToInt16(ASCIIvalues1[i]);
-                                    if (numero2 > 90)
-                                    {
-                                        numero2 = (numero2 - 32) + 0.5;
-                                    }
-                                    Console.WriteLine(numero2);
-                                    if(numero < numero2)
-                                    {
-
-                                    }
+                                    numero2 = (numero2 - 32) + 0.5;
                                 }
-                            }
+                                #endregion
+                                #region ASCII
+                                valor[0] = g1;
+                                byte[] ASCIIvalues = Encoding.ASCII.GetBytes(valor);
+                                for (int e = 0; e < valor.Length; e++)
+                                {
+                                    numero = Convert.ToInt32(ASCIIvalues[e]);
+                                }
+                                if (numero >= 90)
+                                {
+                                    numero = (numero - 32) + 0.5;
+                                }
+                                #endregion
 
+                                //Console.WriteLine(numero);
+                                //Console.WriteLine(numero2);
+                                for (j = i; j > 0 && numero2 > numero; j--)
+                                {
+                                    letras[j] = letras[j - 1];
+                                }
+                                letras[j] = g1;
+                            }
+                            #region Contador+
                             if (contador < letras.Length)
                             {
                                 contador++;
                             }
+                            #endregion
                         }
                         else
                         {
@@ -124,6 +134,7 @@ namespace ArrayCharacters
                         }
                         Console.ReadKey();
                         Console.Clear();
+                        #endregion
                         break;
                 
                 }
