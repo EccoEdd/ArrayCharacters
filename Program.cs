@@ -136,6 +136,271 @@ namespace ArrayCharacters
                         Console.Clear();
                         #endregion
                         break;
+                    case 'd':
+                        #region Busqueda
+                        if (contador > -1)
+                        {
+                            int i;
+                            Console.WriteLine("Elemento a Buscar: ");
+                            char bus = Convert.ToChar(Console.ReadLine());
+
+                            char[] caracter = new char[1];
+                            caracter[0] = bus;
+                            double numero1 = 0, numero2 = 0;
+                            byte[] ASCIIvalues = Encoding.ASCII.GetBytes(caracter);
+
+                            for (int e = 0; e < caracter.Length ; e++)
+                            {
+                                numero1 = Convert.ToDouble(ASCIIvalues[e]);
+                            }
+
+                            for (i = 0; i < contador;)
+                            {
+                                char[] caracter1 = new char[1];
+                                caracter1[0] = letras[i];
+                                byte[] ASCIIvalues1 = Encoding.ASCII.GetBytes(caracter1);
+                                for (int f = 0; f < caracter.Length; f++)
+                                {
+                                    numero2 = Convert.ToDouble(ASCIIvalues1[f]);
+                                }
+
+                                if (numero1 == numero2)
+                                {
+                                    Console.WriteLine("Elemento encontrado en Posicion: " + i);
+                                }else if(i == contador)
+                                {
+                                    Console.WriteLine("No encontrado");
+                                }
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Arreglo no disponible para dicha accion");
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
+                        #endregion
+                        break;
+                    case 'e':
+                        #region Eliminar
+                        if (contador > -1)
+                        {
+                            bool enc = true;
+                            int i;
+                            Console.WriteLine("Elemento a Buscar: ");
+                            char bus = Convert.ToChar(Console.ReadLine());
+
+                            char[] caracter = new char[1];
+                            caracter[0] = bus;
+                            double numero1 = 0, numero2 = 0;
+                            byte[] ASCIIvalues = Encoding.ASCII.GetBytes(caracter);
+
+                            for (int e = 0; e < caracter.Length; e++)
+                            {
+                                numero1 = Convert.ToDouble(ASCIIvalues[e]);
+                            }
+
+                            for (i = 0; i < contador; i++)
+                            {
+                                char[] caracter1 = new char[1];
+                                caracter1[0] = letras[i];
+                                byte[] ASCIIvalues1 = Encoding.ASCII.GetBytes(caracter1);
+                                for (int f = 0; f < caracter.Length; f++)
+                                {
+                                    numero2 = Convert.ToDouble(ASCIIvalues1[f]);
+                                }
+
+                                if (numero1 == numero2)
+                                {
+                                    Console.WriteLine("Elemento encontrado en Posicion: " + i);
+                                    enc = true;
+                                    break;
+                                }
+                                else if (i == contador)
+                                {
+                                    Console.WriteLine("No encontrado");
+                                    enc = false;
+                                }
+                            }
+
+                            if (enc == true)
+                            {
+                                for (int e = i; e <= contador - 1; e++)
+                                {
+                                    if (letras.Length <= 1)
+                                    {
+                                        #region Borrar
+                                        Console.WriteLine("Arreglo limpio");
+                                        letras = new char[0];
+                                        contador = -1;
+                                        Console.ReadKey();
+                                        Console.Clear();
+                                        #endregion
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine(e);
+                                        Console.ReadKey();
+                                        for(int l = e; l < letras.Length; l++)
+                                        {
+                                            if (l + 1 >= letras.Length)
+                                                break;
+                                            letras[e] = letras[l + 1];
+                                            e++;
+                                        }
+                                        //guar = letras[e - 1];
+                                        //letras[e] = guar;
+                                        contador = contador - 1;
+
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Arreglo no disponible para dicha accion");
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
+                        #endregion
+                        break;
+                    case 'm':
+                        #region Modificar
+                        if (contador > -1)
+                        {
+                            #region Elementos
+                            bool enc = true;
+                            int i;
+                            Console.WriteLine("Elemento a Buscar: ");
+                            char bus = Convert.ToChar(Console.ReadLine());
+
+                            char[] caracter = new char[1];
+                            caracter[0] = bus;
+                            double numero1 = 0, numero2 = 0;
+                            byte[] ASCIIvalues = Encoding.ASCII.GetBytes(caracter);
+
+                            for (int e = 0; e < caracter.Length; e++)
+                            {
+                                numero1 = Convert.ToDouble(ASCIIvalues[e]);
+                            }
+
+                            for (i = 0; i < contador; i++)
+                            {
+                                char[] caracter1 = new char[1];
+                                caracter1[0] = letras[i];
+                                byte[] ASCIIvalues1 = Encoding.ASCII.GetBytes(caracter1);
+                                for (int f = 0; f < caracter.Length; f++)
+                                {
+                                    numero2 = Convert.ToDouble(ASCIIvalues1[f]);
+                                }
+
+                                if (numero1 == numero2)
+                                {
+                                    Console.WriteLine("Elemento encontrado en Posicion: " + i);
+                                    enc = true;
+                                    break;
+                                }
+                                else if (i == contador)
+                                {
+                                    Console.WriteLine("No encontrado");
+                                    enc = false;
+                                }
+                            }
+                            #endregion
+                            if (enc == true)
+                            {
+                                double nigg = 0, nigge = 0;
+                                Console.WriteLine("Acceder Valor");
+                                char valor = Convert.ToChar(Console.ReadLine());
+
+                                letras[i] = valor;
+
+                                char guarda; int j, l = 1;
+                                double numero4 = 0;
+                                char[] valor1 = new char[1];
+                                char[] comparador = new char[1];
+
+                                if (i == contador)
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    //Saca Valores ASCII elementos ya existentes
+                                    byte[] ASCIIvalues1 = Encoding.ASCII.GetBytes(letras);
+
+                                    char g1;
+                                    #endregion
+                                    for (l = 1; l <= contador; l ++)
+                                    {
+                                        Console.WriteLine(l);
+                                        Console.ReadKey();
+                                        g1 = letras[l-1];
+                                        //Saca Valor Ascii del elemento guardado
+
+                                        #region ASCIIexistentes
+                                        double numero3 = Convert.ToInt16(ASCIIvalues1[l - 1]);
+                                        if (numero2 > 90)
+                                        {
+                                            numero2 = (numero2 - 32) + 0.5;
+                                        }
+                                        #endregion
+                                        #region ASCII
+                                        valor1[0] = g1;
+                                        byte[] ASCIIvaluese = Encoding.ASCII.GetBytes(valor1);
+                                        for (int e = 0; e < valor1.Length; e++)
+                                        {
+                                            numero4 = Convert.ToInt32(ASCIIvaluese[e]);
+                                        }
+                                        if (numero4 >= 90)
+                                        {
+                                            numero4 = (numero4 - 32) + 0.5;
+                                        }
+                                        #endregion
+
+                                        //Console.WriteLine(numero);
+                                        //Console.WriteLine(numero2);
+                                        for (j = l; j > 0 && numero2 > numero4; j--)
+                                        {
+                                            letras[j] = letras[j - 1];
+                                        }
+                                        letras[j] = g1;
+                                    }
+                                }
+                                //{
+                                //    compara[0] = valor;
+                                //    for(int k = 1; k < contador; k++)
+                                //    {
+                                //        #region valor1
+                                //        byte[] ASCIIvaluesComp = Encoding.ASCII.GetBytes(compara);
+                                //        for(int v = 1; v < ASCIIvaluesComp.Length; v++)
+                                //        {
+                                //            comp = Convert.ToDouble(ASCIIvaluesComp[v]);
+                                //            if (comp >= 90)
+                                //            {
+                                //                comp = (comp - 32) + 0.5;
+                                //            }
+                                //        }
+                                //        #endregion
+
+                                //        #region valor2
+                                //        byte[] ASCIIvaliuesCom = Encoding.ASCII.GetBytes(comparador);
+                                //        #endregion
+                                //        for()
+                                //        letras[j] = guarda;
+                                //    }
+                                //}                                
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Arreglo no disponible para dicha accion");
+                        }
+                        Console.ReadKey();
+                        Console.Clear();
+                        
+                        break;
                 
                 }
             } while (trabajo);
