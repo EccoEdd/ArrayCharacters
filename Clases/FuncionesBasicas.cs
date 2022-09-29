@@ -16,14 +16,14 @@ namespace ArrayCharacters.Clases
 
         public void ShowMenu()
         {
-            Console.WriteLine("         Acciones Disponibles: ");
+            Console.WriteLine("Acciones Disponibles: ");
             Console.WriteLine("         Crear => c");
             Console.WriteLine("         Borrar => b");
             Console.WriteLine("         Insertar Elemento => i");
             Console.WriteLine("         Revisar Elementos => r");
-            Console.WriteLine("         Buscar Elemento=> s");
-            Console.WriteLine("         Eliminar Elemento=> e");
-            Console.WriteLine("         Modificar Elemento=> m");
+            Console.WriteLine("         Buscar Elemento => s");
+            Console.WriteLine("         Eliminar Elemento => e");
+            Console.WriteLine("         Modificar Elemento => m");
             Console.WriteLine("         Creditos => a");
         }
 
@@ -68,7 +68,13 @@ namespace ArrayCharacters.Clases
             Console.Clear();
         }
 
-
+        public void LeerArreglo(char[] arreglo, int contador)
+        {
+            for(int i = 0; i < contador; i++)
+            {
+                Console.WriteLine(arreglo[i]);
+            }
+        }
 
     }
 }

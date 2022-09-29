@@ -25,6 +25,7 @@ namespace ArrayCharacters
                     case 'c':
 
                         #region Crear
+
                         if(contador == -1){ 
                             letras = new char[funciones.Capasidad()];
                             contador = 0;
@@ -32,36 +33,39 @@ namespace ArrayCharacters
                         else
                             Console.WriteLine("Arreglo ya creado");
                         funciones.Continue();
+
                         #endregion
 
                         break;
+
                     case 'b':
 
                         #region Borrar
+
                         letras = new char[funciones.Reset()];
                         contador = -1;
                         funciones.Continue();
+
                         #endregion
 
                         break;
+
                     case 'r':
+
                         #region Revisar
+
                         if (contador == 0 || contador == -1)
-                        {
                             Console.WriteLine("Arreglo Vacio");
-                        }
-                        else { 
-                            for(int i = 0; i < contador;)
-                            {
-                                Console.WriteLine(letras[i]);
-                                i++;
-                            }
-                        }
-                        Console.ReadLine();
-                        Console.Clear();
+
+                        funciones.LeerArreglo(letras, contador);
+                        funciones.Continue();
+
                         #endregion
+                        
                         break;
+
                     case 'i':
+
                         #region Insertar
                         //Verifica si arreglo esta creado y o le queda espacio
                         if (contador < letras.Length && contador != -1)
@@ -128,8 +132,11 @@ namespace ArrayCharacters
                         Console.ReadKey();
                         Console.Clear();
                         #endregion
+                        
                         break;
-                    case 'd':
+                    
+                    case 's':
+
                         #region Busqueda
                         if (contador > -1)
                         {
@@ -174,8 +181,11 @@ namespace ArrayCharacters
                         Console.ReadKey();
                         Console.Clear();
                         #endregion
+                        
                         break;
+                    
                     case 'e':
+
                         #region Eliminar
                         if (contador > -1)
                         {
@@ -257,7 +267,9 @@ namespace ArrayCharacters
                         Console.ReadKey();
                         Console.Clear();
                         #endregion
+                        
                         break;
+
                     case 'm':
                         #region Modificar
                         if (contador > -1)
@@ -393,7 +405,7 @@ namespace ArrayCharacters
                         Console.ReadKey();
                         Console.Clear();
                         break;
-                    case 'v':
+                    case 'a':
                         char n = Convert.ToChar(Console.ReadLine());
                         Console.WriteLine(converter.CharToAscii(n));
                         break;
