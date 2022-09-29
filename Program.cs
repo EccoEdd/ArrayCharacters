@@ -10,37 +10,32 @@ namespace ArrayCharacters
     {
         static void Main(string[] args)
         {
-            char[] letras = new char[0];
-            int contador = -1;
-            bool trabajo = true;
+            CharASCII converter = new CharASCII();
+            Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
 
+            char[] letras = new char[0];
+            int contador = -1, max;
+            bool trabajo = true;
+            char descicion;
             do
             {
-                #region Acciones
-                Console.WriteLine("Accion a realizar: (Crear->c, Borrar->b, " +
-                        "Insertar->i, Revisar->r, " +
-                            "Buscar->d, Eliminar->e, " +
-                                "Modificar->m, Creditos->o)");
-                #endregion
-                char descicion = Convert.ToChar(Console.ReadLine());
-                switch (descicion)
+                funciones.Menu();
+                switch (funciones.Elemento())
                 {
                     case 'c':
+
                         #region Crear
-                        if(contador == -1) 
-                        { 
+                        if(contador == -1){ 
                             Console.WriteLine("Asignar Tamaño de Arreglo: ");
-                            int max = Convert.ToInt16(Console.ReadLine());
+                            max = Convert.ToInt16(Console.ReadLine());
                             letras = new char[max];
                             contador = 0;
                         }
                         else
-                        {
                             Console.WriteLine("Arreglo ya creado");
-                        }
-                        Console.ReadKey();
-                        Console.Clear();
+                        funciones.Continue();
                         #endregion
+
                         break;
                     case 'b':
                         #region Borrar
@@ -399,7 +394,10 @@ namespace ArrayCharacters
                         }
                         Console.ReadKey();
                         Console.Clear();
-                        
+                        break;
+                    case 'v':
+                        char n = Convert.ToChar(Console.ReadLine());
+                        Console.WriteLine(converter.CharToAscii(n));
                         break;
                 
                 }
