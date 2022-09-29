@@ -14,21 +14,19 @@ namespace ArrayCharacters
             Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
 
             char[] letras = new char[0];
-            int contador = -1, max;
+            int contador = -1;
             bool trabajo = true;
-            char descicion;
+
             do
             {
-                funciones.Menu();
+                funciones.ShowMenu();
                 switch (funciones.Elemento())
                 {
                     case 'c':
 
                         #region Crear
                         if(contador == -1){ 
-                            Console.WriteLine("Asignar Tamaño de Arreglo: ");
-                            max = Convert.ToInt16(Console.ReadLine());
-                            letras = new char[max];
+                            letras = new char[funciones.Capasidad()];
                             contador = 0;
                         }
                         else
@@ -38,13 +36,13 @@ namespace ArrayCharacters
 
                         break;
                     case 'b':
+
                         #region Borrar
-                        Console.WriteLine("Arreglo limpio");    
-                        letras = new char[0];
+                        letras = new char[funciones.Reset()];
                         contador = -1;
-                        Console.ReadKey();
-                        Console.Clear();
+                        funciones.Continue();
                         #endregion
+
                         break;
                     case 'r':
                         #region Revisar
