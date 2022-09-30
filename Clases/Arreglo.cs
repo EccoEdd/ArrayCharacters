@@ -56,11 +56,11 @@ namespace ArrayCharacters
 
             return arr;
         }
-        public void Busqueda(char[] letras, char letra)
+        public void Busqueda(char[] letras, char letra, int contador)
         {
             double numero1, numero2;
             numero1 = elemento.CharToASCII(letra);
-            for(int i = 0; i < letras.Length; )
+            for(int i = 0; i < contador; )
             {
                 numero2 = elemento.CharToASCII(letras[i]);
                 if (numero1 == numero2)
@@ -68,7 +68,7 @@ namespace ArrayCharacters
                     Console.WriteLine("Elemento Encontrado en indice " + i);
                     break;
                 }
-                else if (i == letras.Length)
+                else if (i == contador)
                 {
                     Console.WriteLine("Elemento no Encontrado");
                 }

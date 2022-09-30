@@ -86,7 +86,10 @@ namespace ArrayCharacters
                             else
                             {
                                 letras = ar.AlgoritmoAplicado(letras, contador, ar.GuardarElemento());
-                                letras = ar.OrdenamientoAlgoritmico(letras, contador);
+                                #region NO ABRIR
+                                //POR QUE CARAJOS FALLA DE VEZ EN CUANDO MI ORDENAMIENTO INICIAL????
+                                //letras = ar.OrdenamientoAlgoritmico(letras, contador);
+                                #endregion
                                 contador++;
                             }
                         }
@@ -104,7 +107,7 @@ namespace ArrayCharacters
 
                         if (contador > -1)
                         {
-                            ar.Busqueda(letras, ar.ObtenerElemento());
+                            ar.Busqueda(letras, ar.ObtenerElemento(), contador);
                         }
                         else
                         {
@@ -350,27 +353,6 @@ namespace ArrayCharacters
                 
                 }
             } while (trabajo);
-            
-
-            //letras[0] = 'a';
-            //letras[1] = 'A';
-
-            //Console.WriteLine(letras [1].GetTypeCode());
-
-            //byte[] ASCIIvalues = Encoding.ASCII.GetBytes(letras);
-
-            //for(int i = 0; i < letras.Length;)
-            //{
-            //    Console.WriteLine(ASCIIvalues[i]);
-            //    i++;
-            //}
-
-            //if (letras[0].CompareTo(letras[1]) > 0)
-            //    Console.WriteLine("Desorden");
-            //else
-            //    Console.WriteLine("Ordenados");
-
-            //Console.ReadKey();
 
         }
 
