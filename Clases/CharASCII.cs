@@ -8,7 +8,7 @@ namespace ArrayCharacters
 {
     internal class CharASCII
     {
-        public double CharToAscii(char letra)
+        public double CharToASCII(char letra)
         {
             double valor;
             valor = Convert.ToByte(letra);

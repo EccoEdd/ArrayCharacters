@@ -11,7 +11,7 @@ namespace ArrayCharacters.Clases
 
         #region Valores
         public char Seleccion { get; set; }
-        public int Lenght { get; set; }
+        public int Len { get; set; }
         #endregion
 
         public void ShowMenu()
@@ -46,20 +46,20 @@ namespace ArrayCharacters.Clases
             try
             {
                 Console.WriteLine("Asignar Tamaño de Arreglo: ");
-                Lenght = Convert.ToInt16(Console.ReadLine());
+                Len = Convert.ToInt16(Console.ReadLine());
             }
             catch
             {
-                Lenght = 1;
+                Len = 20;
             }
-            return Lenght;
+            return Len;
         }
 
         public int Reset()
         {
             Console.WriteLine("Arreglo Limpio");
-            Lenght = 0;
-            return Lenght;
+            Len = 0;
+            return Len;
         }
 
         public void Continue()
@@ -75,6 +75,8 @@ namespace ArrayCharacters.Clases
                 Console.WriteLine(arreglo[i]);
             }
         }
+
+
 
     }
 }

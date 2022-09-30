@@ -10,13 +10,21 @@ namespace ArrayCharacters
     {
         static void Main(string[] args)
         {
+
+            #region Clases
+
+            Arreglo ar = new Arreglo();
             CharASCII converter = new CharASCII();
             Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
 
+            #endregion
+
+            #region Variables Globales
             char[] letras = new char[0];
             int contador = -1;
             bool trabajo = true;
-
+            #endregion
+            
             do
             {
                 funciones.ShowMenu();
@@ -67,70 +75,24 @@ namespace ArrayCharacters
                     case 'i':
 
                         #region Insertar
-                        //Verifica si arreglo esta creado y o le queda espacio
-                        if (contador < letras.Length && contador != -1)
+
+                        if (contador < letras.Length && contador > -1)
                         {
-                            #region InicializacionValores
-                            char[] valor = new char[1];
-                            double numero = 0;
-
-                            Console.WriteLine("Insertar Elemento");
-                            char val = Convert.ToChar(Console.ReadLine());
-                            letras[contador] = val;
-
-                            //Saca Valores ASCII elementos ya existentes
-                            byte[] ASCIIvalues1 = Encoding.ASCII.GetBytes(letras);
-
-                            char g1;
-                            int j, i = 1;
-                            #endregion
-                            for (i = 1; i <= contador; i++)
+                            if (contador == 0)
                             {
-                                
-                                g1 = letras[i];
-                                //Saca Valor Ascii del elemento guardado
-
-                                #region ASCIIexistentes
-                                double numero2 = Convert.ToInt16(ASCIIvalues1[i - 1]);
-                                if (numero2 > 90)
-                                {
-                                    numero2 = (numero2 - 32) + 0.5;
-                                }
-                                #endregion
-                                #region ASCII
-                                valor[0] = g1;
-                                byte[] ASCIIvalues = Encoding.ASCII.GetBytes(valor);
-                                for (int e = 0; e < valor.Length; e++)
-                                {
-                                    numero = Convert.ToInt32(ASCIIvalues[e]);
-                                }
-                                if (numero >= 90)
-                                {
-                                    numero = (numero - 32) + 0.5;
-                                }
-                                #endregion
-
-                                //Console.WriteLine(numero);
-                                //Console.WriteLine(numero2);
-                                for (j = i; j > 0 && numero2 > numero; j--)
-                                {
-                                    letras[j] = letras[j - 1];
-                                }
-                                letras[j] = g1;
-                            }
-                            #region Contador+
-                            if (contador < letras.Length)
-                            {
+                                letras[0] = ar.GuardarElemento();
                                 contador++;
                             }
-                            #endregion
+                            else
+                            {
+                                letras = ar.AlgoritmoAplicado(letras, contador, ar.GuardarElemento());
+                                contador++;
+                            }
                         }
                         else
-                        {
                             Console.Write("Arreglo No disponible para cierta accion");
-                        }
-                        Console.ReadKey();
-                        Console.Clear();
+                        funciones.Continue();
+                        
                         #endregion
                         
                         break;
@@ -271,6 +233,8 @@ namespace ArrayCharacters
                         break;
 
                     case 'm':
+
+                        #region En trabajo
                         #region Modificar
                         if (contador > -1)
                         {
@@ -404,10 +368,13 @@ namespace ArrayCharacters
                         }
                         Console.ReadKey();
                         Console.Clear();
+                        #endregion
+                        
                         break;
                     case 'a':
-                        char n = Convert.ToChar(Console.ReadLine());
-                        Console.WriteLine(converter.CharToAscii(n));
+
+
+
                         break;
                 
                 }
