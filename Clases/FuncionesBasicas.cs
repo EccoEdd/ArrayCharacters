@@ -68,15 +68,5 @@ namespace ArrayCharacters.Clases
             Console.Clear();
         }
 
-        public void LeerArreglo(char[] arreglo, int contador)
-        {
-            for(int i = 0; i < contador; i++)
-            {
-                Console.WriteLine(arreglo[i]);
-            }
-        }
-
-
-
     }
 }

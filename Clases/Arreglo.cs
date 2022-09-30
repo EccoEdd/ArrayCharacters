@@ -9,6 +9,9 @@ namespace ArrayCharacters
     internal class Arreglo
     {
         CharASCII elemento = new CharASCII();
+        Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
+
+        public int Contador { get; set; }
 
         public char ObtenerElemento()
         {
@@ -58,22 +61,60 @@ namespace ArrayCharacters
         }
         public void Busqueda(char[] letras, char letra, int contador)
         {
-            double numero1, numero2;
-            numero1 = elemento.CharToASCII(letra);
-            for(int i = 0; i < contador; )
+            for(int i = 1; i < contador; )
             {
-                numero2 = elemento.CharToASCII(letras[i]);
-                if (numero1 == numero2)
+                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i - 1]))
                 {
-                    Console.WriteLine("Elemento Encontrado en indice " + i);
+                    Console.WriteLine("Elemento Encontrado en indice " + (i - 1));
                     break;
                 }
-                else if (i == contador)
+                if ((i+2) == contador)
                 {
                     Console.WriteLine("Elemento no Encontrado");
                 }
+                
                 i++;
             }
+        }
+        public char[] Eliminar(char[] letras, char letra, int contador)
+        {
+            bool encontrado = false;
+            int pos = 0;
+
+            for (int i = 1; i < contador;)
+            {
+                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i - 1]))
+                {
+                    Console.WriteLine("Elemento Encontrado en indice " + (i - 1));
+                    pos = i - 1;
+                    encontrado = true;
+                    break;
+                }
+                if ((i + 2) == contador)
+                {
+                    Console.WriteLine("Elemento no Encontrado");
+                }
+
+                i++;
+            }
+            if (encontrado)
+            {
+                if (contador > 0)
+                {
+                    for (int i = pos; i < contador; i++)
+                    {
+                        letras[i] = letras[i + 1];
+                    }
+                }
+                else
+                {
+                    letras = new char[0];
+                    Contador = 0;
+                    Console.WriteLine("Arreglo Limpio");
+                }
+            }
+
+            return letras;
         }
 
         public char[] OrdenamientoAlgoritmico(char[] arreglo, int contador)
@@ -96,6 +137,15 @@ namespace ArrayCharacters
 
             return arreglado;
         }
+
+        public void LeerArreglo(char[] arreglo, int contador)
+        {
+            for (int i = 0; i < contador; i++)
+            {
+                Console.WriteLine(arreglo[i]);
+            }
+        }
+
 
     }
 }

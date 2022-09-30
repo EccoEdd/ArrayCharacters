@@ -65,7 +65,7 @@ namespace ArrayCharacters
                         if (contador == 0 || contador == -1)
                             Console.WriteLine("Arreglo Vacio");
 
-                        funciones.LeerArreglo(letras, contador);
+                        ar.LeerArreglo(letras, contador);
                         funciones.Continue();
 
                         #endregion
@@ -87,8 +87,8 @@ namespace ArrayCharacters
                             {
                                 letras = ar.AlgoritmoAplicado(letras, contador, ar.GuardarElemento());
                                 #region NO ABRIR
-                                //POR QUE CARAJOS FALLA DE VEZ EN CUANDO MI ORDENAMIENTO INICIAL????
-                                //letras = ar.OrdenamientoAlgoritmico(letras, contador);
+                                //POR QUE CARAJOS FALLA MUY DE VEZ EN CUANDO MI ORDENAMIENTO INICIAL????
+                                letras = ar.OrdenamientoAlgoritmico(letras, contador);
                                 #endregion
                                 contador++;
                             }
@@ -122,85 +122,25 @@ namespace ArrayCharacters
                     case 'e':
 
                         #region Eliminar
+
                         if (contador > -1)
                         {
-                            bool enc = true;
-                            int i;
-                            Console.WriteLine("Elemento a Buscar: ");
-                            char bus = Convert.ToChar(Console.ReadLine());
-
-                            char[] caracter = new char[1];
-                            caracter[0] = bus;
-                            double numero1 = 0, numero2 = 0;
-                            byte[] ASCIIvalues = Encoding.ASCII.GetBytes(caracter);
-
-                            for (int e = 0; e < caracter.Length; e++)
+                            if (contador == 0)
                             {
-                                numero1 = Convert.ToDouble(ASCIIvalues[e]);
+                                letras = new char[funciones.Reset()];
+                                contador = -1;
                             }
-
-                            for (i = 0; i < contador; i++)
+                            else
                             {
-                                char[] caracter1 = new char[1];
-                                caracter1[0] = letras[i];
-                                byte[] ASCIIvalues1 = Encoding.ASCII.GetBytes(caracter1);
-                                for (int f = 0; f < caracter.Length; f++)
-                                {
-                                    numero2 = Convert.ToDouble(ASCIIvalues1[f]);
-                                }
-
-                                if (numero1 == numero2)
-                                {
-                                    Console.WriteLine("Elemento encontrado en Posicion: " + i);
-                                    enc = true;
-                                    break;
-                                }
-                                else if (i == contador)
-                                {
-                                    Console.WriteLine("No encontrado");
-                                    enc = false;
-                                }
-                            }
-
-                            if (enc == true)
-                            {
-                                for (int e = i; e <= contador - 1; e++)
-                                {
-                                    if (letras.Length <= 1)
-                                    {
-                                        #region Borrar
-                                        Console.WriteLine("Arreglo limpio");
-                                        letras = new char[0];
-                                        contador = -1;
-                                        Console.ReadKey();
-                                        Console.Clear();
-                                        #endregion
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine(e);
-                                        Console.ReadKey();
-                                        for(int l = e; l < letras.Length; l++)
-                                        {
-                                            if (l + 1 >= letras.Length)
-                                                break;
-                                            letras[e] = letras[l + 1];
-                                            e++;
-                                        }
-                                        //guar = letras[e - 1];
-                                        //letras[e] = guar;
-                                        contador = contador - 1;
-
-                                    }
-                                }
+                                letras = ar.Eliminar(letras, ar.ObtenerElemento(), contador);
                             }
                         }
                         else
                         {
                             Console.WriteLine("Arreglo no disponible para dicha accion");
                         }
-                        Console.ReadKey();
-                        Console.Clear();
+                        funciones.Continue();
+
                         #endregion
                         
                         break;

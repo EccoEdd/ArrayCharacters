@@ -46,6 +46,7 @@
     <Compile Include="Clases\Arreglo.cs" />
     <Compile Include="Clases\CharASCII.cs" />
     <Compile Include="Clases\FuncionesBasicas.cs" />
+    <Compile Include="Clases\LosMinions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
