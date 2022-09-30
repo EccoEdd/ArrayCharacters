@@ -103,14 +103,16 @@ namespace ArrayCharacters
             }
             if (encontrado)
             {
-                if (contador > 0)
+                if (contador >= 1)
                 {
                     for (int i = pos; i < contador; i++)
                     {
                         letras[i] = letras[i + 1];
                     }
-                }
-                else
+                }else if(contador == 0)
+                {
+
+                }else
                 {
                     letras = new char[0];
                     Console.WriteLine("Arreglo Limpio");
@@ -174,8 +176,21 @@ namespace ArrayCharacters
                 Console.WriteLine("Elemento Modificado exitosamente");
             }
             arg = OrdenamientoAlgoritmico(letras, contador);
-            Busqueda(arg, letra, contador);
+            InsertaBusqueda(arg, letra, contador);
             return arg;
+        }
+
+        public void InsertaBusqueda(char[] letras, char letra, int contador)
+        {
+            for (int i = 0; i < contador;)
+            {
+                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
+                {
+                    Console.WriteLine("Elemento Encontrado en indice " + i);
+                    break;
+                }
+                i++;
+            }
         }
 
     }

@@ -85,7 +85,13 @@ namespace ArrayCharacters
                             }
                             else
                             {
-                                letras = ar.AlgoritmoAplicado(letras, contador, ar.GuardarElemento());
+                                char n = ar.GuardarElemento();
+                                letras = ar.AlgoritmoAplicado(letras, contador, n);
+                                #region NO ABRIR
+                                //POR QUE CARAJOS FALLA MUY DE VEZ EN CUANDO MI ORDENAMIENTO INICIAL????
+                                letras = ar.OrdenamientoAlgoritmico(letras, contador);
+                                ar.InsertaBusqueda(letras, n, contador);
+                                #endregion
                                 contador++;
                             }
                         }
