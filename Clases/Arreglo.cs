@@ -151,8 +151,8 @@ namespace ArrayCharacters
         public char[] Modificar(char[] letras, int contador, char letra)
         {
             bool encontrado = false;
-            int pos = 0;
-            int i;
+            int pos = 0, i;
+            char[] arg;
             for (i = 0; i < contador;)
             {
                 if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
@@ -170,9 +170,10 @@ namespace ArrayCharacters
             }
             if (encontrado)
             {
-                letras[i] = letra;
+                letras[pos] = letra;
             }
-            return letras;
+            arg = OrdenamientoAlgoritmico(letras, contador);
+            return arg;
         }
 
     }

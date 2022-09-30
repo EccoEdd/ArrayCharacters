@@ -16,6 +16,7 @@ namespace ArrayCharacters
             Arreglo ar = new Arreglo();
             CharASCII converter = new CharASCII();
             Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
+            Clases.LosMinions minion = new Clases.LosMinions();
 
             #endregion
 
