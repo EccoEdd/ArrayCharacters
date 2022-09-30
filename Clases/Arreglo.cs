@@ -86,20 +86,19 @@ namespace ArrayCharacters
             bool encontrado = false;
             int pos = 0;
 
-            for (int i = 1; i < contador;)
+            for (int i = 0; i < contador;)
             {
-                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i - 1]))
+                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
                 {
-                    Console.WriteLine("Elemento Encontrado en indice " + (i - 1));
-                    pos = i - 1;
+                    Console.WriteLine("Elemento Encontrado en indice " + i);
                     encontrado = true;
+                    pos = i;
                     break;
                 }
-                if ((i + 2) == contador)
+                if ((i + 1) == contador)
                 {
                     Console.WriteLine("Elemento no Encontrado");
                 }
-
                 i++;
             }
             if (encontrado)
