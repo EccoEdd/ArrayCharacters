@@ -152,37 +152,25 @@ namespace ArrayCharacters
         {
             bool encontrado = false;
             int pos = 0;
-
-            for (int i = 1; i < contador;)
+            int i;
+            for (i = 0; i < contador;)
             {
-                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i - 1]))
+                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
                 {
-                    Console.WriteLine("Elemento Encontrado en indice " + (i - 1));
-                    pos = i - 1;
+                    Console.WriteLine("Elemento Encontrado en indice " + i);
                     encontrado = true;
+                    pos = i;
                     break;
                 }
-                if ((i + 2) == contador)
+                if ((i + 1) == contador)
                 {
                     Console.WriteLine("Elemento no Encontrado");
                 }
-
                 i++;
             }
             if (encontrado)
             {
-                if (contador > 0)
-                {
-                    for (int i = pos; i < contador; i++)
-                    {
-                        letras[i] = letras[i + 1];
-                    }
-                }
-                else
-                {
-                    letras = new char[0];
-                    Console.WriteLine("Arreglo Limpio");
-                }
+                letras[i] = letra;
             }
             return letras;
         }

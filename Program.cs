@@ -148,8 +148,8 @@ namespace ArrayCharacters
                     case 'm':
 
                         #region En trabajo
-                        
 
+                        ar.Modificar(letras, contador, ar.ObtenerElemento());
 
                         #endregion
                         
