@@ -11,13 +11,19 @@ namespace ArrayCharacters
         CharASCII elemento = new CharASCII();
         Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
 
-        public int Contador { get; set; }
-
         public char ObtenerElemento()
         {
             char letra;
-            Console.WriteLine("Insertar Elemento");
-            letra = Convert.ToChar(Console.ReadLine());
+            try
+            {
+                Console.WriteLine("Insertar Elemento");
+                letra = Convert.ToChar(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("Default : a");
+                letra = 'a';
+            }
             return letra;
         }
         public char GuardarElemento()
@@ -61,18 +67,17 @@ namespace ArrayCharacters
         }
         public void Busqueda(char[] letras, char letra, int contador)
         {
-            for(int i = 1; i < contador; )
+            for(int i = 0; i < contador; )
             {
-                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i - 1]))
+                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
                 {
-                    Console.WriteLine("Elemento Encontrado en indice " + (i - 1));
+                    Console.WriteLine("Elemento Encontrado en indice " + i);
                     break;
                 }
-                if ((i+2) == contador)
+                if ((i+1) == contador)
                 {
                     Console.WriteLine("Elemento no Encontrado");
                 }
-                
                 i++;
             }
         }
@@ -109,11 +114,9 @@ namespace ArrayCharacters
                 else
                 {
                     letras = new char[0];
-                    Contador = 0;
                     Console.WriteLine("Arreglo Limpio");
                 }
             }
-
             return letras;
         }
 
@@ -146,6 +149,44 @@ namespace ArrayCharacters
             }
         }
 
+        public char[] Modificar(char[] letras, int contador, char letra)
+        {
+            bool encontrado = false;
+            int pos = 0;
+
+            for (int i = 1; i < contador;)
+            {
+                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i - 1]))
+                {
+                    Console.WriteLine("Elemento Encontrado en indice " + (i - 1));
+                    pos = i - 1;
+                    encontrado = true;
+                    break;
+                }
+                if ((i + 2) == contador)
+                {
+                    Console.WriteLine("Elemento no Encontrado");
+                }
+
+                i++;
+            }
+            if (encontrado)
+            {
+                if (contador > 0)
+                {
+                    for (int i = pos; i < contador; i++)
+                    {
+                        letras[i] = letras[i + 1];
+                    }
+                }
+                else
+                {
+                    letras = new char[0];
+                    Console.WriteLine("Arreglo Limpio");
+                }
+            }
+            return letras;
+        }
 
     }
 }
