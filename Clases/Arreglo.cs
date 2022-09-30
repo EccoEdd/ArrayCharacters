@@ -8,6 +8,8 @@ namespace ArrayCharacters
 {
     internal class Arreglo
     {
+        CharASCII elemento = new CharASCII();
+
         public char ObtenerElemento()
         {
             char letra;
@@ -31,7 +33,6 @@ namespace ArrayCharacters
         }
         public char[] AlgoritmoAplicado(char[] letras, int contador, char letra)
         {
-            CharASCII elemento = new CharASCII();
 
             #region Valores
             char[] arr = letras;
@@ -55,6 +56,24 @@ namespace ArrayCharacters
 
             return arr;
         }
-
+        public void Busqueda(char[] letras, char letra)
+        {
+            double numero1, numero2;
+            numero1 = elemento.CharToASCII(letra);
+            for(int i = 0; i < letras.Length; )
+            {
+                numero2 = elemento.CharToASCII(letras[i]);
+                if (numero1 == numero2)
+                {
+                    Console.WriteLine("Elemento Encontrado en indice " + i);
+                    break;
+                }
+                else if (i == letras.Length)
+                {
+                    Console.WriteLine("Elemento no Encontrado");
+                }
+                i++;
+            }
+        }
     }
 }

@@ -100,48 +100,17 @@ namespace ArrayCharacters
                     case 's':
 
                         #region Busqueda
+
                         if (contador > -1)
                         {
-                            int i;
-                            Console.WriteLine("Elemento a Buscar: ");
-                            char bus = Convert.ToChar(Console.ReadLine());
-
-                            char[] caracter = new char[1];
-                            caracter[0] = bus;
-                            double numero1 = 0, numero2 = 0;
-                            byte[] ASCIIvalues = Encoding.ASCII.GetBytes(caracter);
-
-                            for (int e = 0; e < caracter.Length ; e++)
-                            {
-                                numero1 = Convert.ToDouble(ASCIIvalues[e]);
-                            }
-
-                            for (i = 0; i < contador;)
-                            {
-                                char[] caracter1 = new char[1];
-                                caracter1[0] = letras[i];
-                                byte[] ASCIIvalues1 = Encoding.ASCII.GetBytes(caracter1);
-                                for (int f = 0; f < caracter.Length; f++)
-                                {
-                                    numero2 = Convert.ToDouble(ASCIIvalues1[f]);
-                                }
-
-                                if (numero1 == numero2)
-                                {
-                                    Console.WriteLine("Elemento encontrado en Posicion: " + i);
-                                }else if(i == contador)
-                                {
-                                    Console.WriteLine("No encontrado");
-                                }
-                                i++;
-                            }
+                            ar.Busqueda(letras, ar.ObtenerElemento());
                         }
                         else
                         {
                             Console.WriteLine("Arreglo no disponible para dicha accion");
                         }
-                        Console.ReadKey();
-                        Console.Clear();
+                        funciones.Continue();
+
                         #endregion
                         
                         break;
@@ -373,7 +342,8 @@ namespace ArrayCharacters
                         break;
                     case 'a':
 
-
+                        Console.WriteLine(converter.CharToASCII(Convert.ToChar(Console.ReadLine())));
+                        funciones.Continue();
 
                         break;
                 
