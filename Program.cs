@@ -148,11 +148,14 @@ namespace ArrayCharacters
                     case 'm':
 
                         #region En trabajo
-
-                        ar.Modificar(letras, contador, ar.ObtenerElemento());
+                        if (contador > -1)
+                            ar.Modificar(letras, contador, ar.ObtenerElemento());
+                        else
+                            Console.WriteLine("Arreglo no disponible para dicha accion");
+                        funciones.Continue();
 
                         #endregion
-                        
+
                         break;
                     case 'a':
 
