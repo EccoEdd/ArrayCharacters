@@ -86,6 +86,7 @@ namespace ArrayCharacters
                             else
                             {
                                 letras = ar.AlgoritmoAplicado(letras, contador, ar.GuardarElemento());
+                                letras = ar.OrdenamientoAlgoritmico(letras, contador);
                                 contador++;
                             }
                         }

@@ -75,5 +75,27 @@ namespace ArrayCharacters
                 i++;
             }
         }
+
+        public char[] OrdenamientoAlgoritmico(char[] arreglo, int contador)
+        {
+            char[] arreglado;
+            arreglado = arreglo;
+
+            for(int i = 0; i < contador; i++)
+            {
+                for(int j = 0; j < contador-1; j++)
+                {
+                    if (elemento.CharToASCII(arreglo[j]) > elemento.CharToASCII(arreglo[j + 1]))
+                    {
+                        char guardar = arreglo[j];
+                        arreglo[j] = arreglo[j + 1];
+                        arreglo[j + 1] = guardar;
+                    }
+                }
+            }
+
+            return arreglado;
+        }
+
     }
 }
