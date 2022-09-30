@@ -14,7 +14,6 @@ namespace ArrayCharacters
             #region Clases
 
             Arreglo ar = new Arreglo();
-            CharASCII converter = new CharASCII();
             Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
             Clases.LosMinions minion = new Clases.LosMinions();
 
@@ -148,7 +147,7 @@ namespace ArrayCharacters
 
                     case 'm':
 
-                        #region En trabajo
+                        #region Modificar
                         if (contador > -1)
                             ar.Modificar(letras, contador, ar.ObtenerElemento());
                         else
@@ -160,8 +159,7 @@ namespace ArrayCharacters
                         break;
                     case 'a':
 
-                        Console.WriteLine(converter.CharToASCII(Convert.ToChar(Console.ReadLine())));
-                        funciones.Continue();
+                        
 
                         break;
                 

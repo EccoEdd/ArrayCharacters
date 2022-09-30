@@ -107,6 +107,7 @@ namespace ArrayCharacters
                 {
                     for (int i = pos; i < contador; i++)
                     {
+
                         letras[i] = letras[i + 1];
                     }
                 }
@@ -170,7 +171,8 @@ namespace ArrayCharacters
             }
             if (encontrado)
             {
-                letras[pos] = letra;
+                letras[pos] = ObtenerElemento();
+                Console.WriteLine("Elemento Modificado exitosamente");
             }
             arg = OrdenamientoAlgoritmico(letras, contador);
             return arg;
