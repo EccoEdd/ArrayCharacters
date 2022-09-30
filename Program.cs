@@ -15,7 +15,7 @@ namespace ArrayCharacters
 
             Arreglo ar = new Arreglo();
             Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
-            Clases.LosMinions minion = new Clases.LosMinions();
+            Clases.LosMinions LosMinions = new Clases.LosMinions();
 
             #endregion
 
@@ -89,8 +89,7 @@ namespace ArrayCharacters
                                 letras = ar.AlgoritmoAplicado(letras, contador, n);
                                 #region NO ABRIR
                                 //POR QUE CARAJOS FALLA MUY DE VEZ EN CUANDO MI ORDENAMIENTO INICIAL????
-                                letras = ar.OrdenamientoAlgoritmico(letras, contador);
-                                ar.InsertaBusqueda(letras, n, contador);
+                                letras = ar.OrdenamientoAlgoritmico(letras, contador);                                
                                 #endregion
                                 contador++;
                             }
@@ -136,8 +135,9 @@ namespace ArrayCharacters
                             {
                                 if(contador >= 1)
                                     letras = ar.Eliminar(letras, ar.ObtenerElemento(), contador);
-
+                                contador = ar.CountSave;
                             }
+                            ar.OrdenamientoAlgoritmico(letras, contador);
                         }
                         else
                         {
@@ -163,7 +163,8 @@ namespace ArrayCharacters
                         break;
                     case 'a':
 
-                        
+                        LosMinions.Presentan();
+                        funciones.Continue();
 
                         break;
                 

@@ -103,16 +103,15 @@ namespace ArrayCharacters
             }
             if (encontrado)
             {
-                if (contador >= 1)
+                if (contador > 0)
                 {
-                    for (int i = pos; i < contador; i++)
+                    for(int i = pos; i < contador; i++)
                     {
-                        letras[i] = letras[i + 1];
+                        letras[pos] = letras[i];
                     }
-                }else if(contador == 0)
-                {
-
-                }else
+                    CountSave = contador - 1;
+                }
+                else
                 {
                     letras = new char[0];
                     Console.WriteLine("Arreglo Limpio");
@@ -186,12 +185,15 @@ namespace ArrayCharacters
             {
                 if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
                 {
-                    Console.WriteLine("Elemento Encontrado en indice " + i);
+                    Console.WriteLine("Elemento en indice " + i);
                     break;
                 }
                 i++;
             }
         }
+
+
+        public int CountSave { get; set; }
 
     }
 }
