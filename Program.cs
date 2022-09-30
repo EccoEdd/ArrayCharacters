@@ -86,10 +86,6 @@ namespace ArrayCharacters
                             else
                             {
                                 letras = ar.AlgoritmoAplicado(letras, contador, ar.GuardarElemento());
-                                #region NO ABRIR
-                                //POR QUE CARAJOS FALLA MUY DE VEZ EN CUANDO MI ORDENAMIENTO INICIAL????
-                                letras = ar.OrdenamientoAlgoritmico(letras, contador);
-                                #endregion
                                 contador++;
                             }
                         }
@@ -132,7 +128,9 @@ namespace ArrayCharacters
                             }
                             else
                             {
-                                letras = ar.Eliminar(letras, ar.ObtenerElemento(), contador);
+                                if(contador >= 1)
+                                    letras = ar.Eliminar(letras, ar.ObtenerElemento(), contador);
+
                             }
                         }
                         else

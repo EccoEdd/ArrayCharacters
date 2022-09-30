@@ -37,6 +37,7 @@ namespace ArrayCharacters
             catch
             {
                 letra = 'a';
+                Console.WriteLine("Default : a");
             }
             return letra;
         }
@@ -62,7 +63,6 @@ namespace ArrayCharacters
                 }
                 letras[j] = g1;
             }
-
             return arr;
         }
         public void Busqueda(char[] letras, char letra, int contador)
@@ -107,7 +107,6 @@ namespace ArrayCharacters
                 {
                     for (int i = pos; i < contador; i++)
                     {
-
                         letras[i] = letras[i + 1];
                     }
                 }
@@ -137,7 +136,7 @@ namespace ArrayCharacters
                     }
                 }
             }
-
+            
             return arreglado;
         }
 
@@ -175,6 +174,7 @@ namespace ArrayCharacters
                 Console.WriteLine("Elemento Modificado exitosamente");
             }
             arg = OrdenamientoAlgoritmico(letras, contador);
+            Busqueda(arg, letra, contador);
             return arg;
         }
 
