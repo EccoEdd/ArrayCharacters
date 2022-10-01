@@ -43,7 +43,6 @@ namespace ArrayCharacters
         }
         public char[] GuardadoElemento(char[] letras, int contador, char letra)
         {
-            char[] arr;
             int i;
             for (i = 0; i < contador;)
             {
@@ -58,8 +57,7 @@ namespace ArrayCharacters
                 j = j -1;
             }
             letras[i] = letra;
-            arr = letras;
-            return arr;
+            return letras;
         }
         public void Busqueda(char[] letras, char letra, int contador)
         {
@@ -67,13 +65,11 @@ namespace ArrayCharacters
             {
                 if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
                 {
-                    Console.WriteLine("Elemento Encontrado en indice " + i);
+                    Console.WriteLine("Elemento en indice " + i);
                     break;
                 }
                 if ((i+1) == contador)
-                {
                     Console.WriteLine("Elemento no Encontrado");
-                }
                 i++;
             }
         }
@@ -81,7 +77,6 @@ namespace ArrayCharacters
         {
             bool encontrado = false;
             int pos = 0;
-
             for (int i = 0; i < contador;)
             {
                 if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
@@ -92,18 +87,16 @@ namespace ArrayCharacters
                     break;
                 }
                 if ((i + 1) == contador)
-                {
                     Console.WriteLine("Elemento no Encontrado");
-                }
                 i++;
             }
             if (encontrado)
             {
                 if (contador > 0)
                 {
-                    for(int i = pos; i < contador; i++)
+                    for(int i = pos; i < contador - 1; i++)
                     {
-                        letras[pos] = letras[i];
+                        letras[i] = letras[i + 1];
                     }
                     CountSave = contador - 1;
                 }
@@ -120,13 +113,15 @@ namespace ArrayCharacters
         {
             char[] arreglado;
             arreglado = arreglo;
-
-            for(int i = 0; i < contador; i++)
+            bool flag = true;
+            for(int i = 0; i < contador && flag; i++)
             {
-                for(int j = 0; j < contador-1; j++)
+                flag = false;
+                for(int j = 0; j < contador -i -1; j++)
                 {
                     if (elemento.CharToASCII(arreglo[j]) > elemento.CharToASCII(arreglo[j + 1]))
                     {
+                        flag = true;
                         char guardar = arreglo[j];
                         arreglo[j] = arreglo[j + 1];
                         arreglo[j + 1] = guardar;
@@ -147,32 +142,13 @@ namespace ArrayCharacters
 
         public char[] Modificar(char[] letras, int contador, char letra)
         {
-            bool encontrado = false;
-            int pos = 0, i;
-            char[] arg;
-            for (i = 0; i < contador;)
-            {
-                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
-                {
-                    Console.WriteLine("Elemento Encontrado en indice " + i);
-                    encontrado = true;
-                    pos = i;
-                    break;
-                }
-                if ((i + 1) == contador)
-                {
-                    Console.WriteLine("Elemento no Encontrado");
-                }
-                i++;
-            }
-            if (encontrado)
-            {
-                letras[pos] = ObtenerElemento();
-                Console.WriteLine("Elemento Modificado exitosamente");
-            }
-            arg = OrdenamientoAlgoritmico(letras, contador);
-            InsertaBusqueda(arg, letra, contador);
-            return arg;
+            CountSave = contador;
+            letras = Eliminar(letras, letra, CountSave);
+            CountSave = contador - 1;
+            char el = GuardarElemento();
+            letras = GuardadoElemento(letras, CountSave, el);
+            Busqueda(letras, el, contador);
+            return letras;
         }
 
         public void InsertaBusqueda(char[] letras, char letra, int contador)
@@ -212,8 +188,8 @@ namespace ArrayCharacters
             }
             return arr;
         }
-
         public int CountSave { get; set; }
 
     }
 }
+

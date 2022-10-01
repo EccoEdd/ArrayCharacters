@@ -13,9 +13,8 @@ namespace ArrayCharacters
             double valor;
             valor = Convert.ToByte(letra);
 
-            if (valor >= 90)
+            if (valor > 90)
                 valor = (valor - 32) + 0.5;
-                
             return valor;
         }
         

@@ -16,6 +16,7 @@ namespace ArrayCharacters
             Arreglo ar = new Arreglo();
             Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
             Clases.LosMinions LosMinions = new Clases.LosMinions();
+            CharASCII val = new CharASCII();
 
             #endregion
 
@@ -107,9 +108,7 @@ namespace ArrayCharacters
                             ar.Busqueda(letras, ar.ObtenerElemento(), contador);
                         }
                         else
-                        {
                             Console.WriteLine("Arreglo no disponible para dicha accion");
-                        }
                         funciones.Continue();
 
                         #endregion
@@ -136,9 +135,7 @@ namespace ArrayCharacters
                             ar.OrdenamientoAlgoritmico(letras, contador);
                         }
                         else
-                        {
                             Console.WriteLine("Arreglo no disponible para dicha accion");
-                        }
                         funciones.Continue();
 
                         #endregion
