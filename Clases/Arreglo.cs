@@ -41,28 +41,24 @@ namespace ArrayCharacters
             }
             return letra;
         }
-        public char[] AlgoritmoAplicado(char[] letras, int contador, char letra)
+        public char[] GuardadoElemento(char[] letras, int contador, char letra)
         {
-
-            #region Valores
-            char[] arr = letras;
-            int j, i;
-            double numero1, numero2;
-            char g1;
-            letras[contador] = letra;
-            #endregion
-
-            for (i = 1; i <= contador; i++)
+            char[] arr;
+            int i;
+            for (i = 0; i < contador;)
             {
-                g1 = letras[i];
-                numero2 = elemento.CharToASCII(letras[i - 1]);
-                numero1 = elemento.CharToASCII(g1);
-                for (j = i; j > 0 && numero2 > numero1; j--)
-                {
-                    letras[j] = letras[j - 1];
-                }
-                letras[j] = g1;
+                if (elemento.CharToASCII(letra) < elemento.CharToASCII(letras[i]))
+                    break;   
+                else
+                    i++;
             }
+            for (int j = contador; j > i;)
+            {
+                letras[j] = letras[j-1];
+                j = j -1;
+            }
+            letras[i] = letra;
+            arr = letras;
             return arr;
         }
         public void Busqueda(char[] letras, char letra, int contador)
@@ -192,6 +188,30 @@ namespace ArrayCharacters
             }
         }
 
+        public char[] AlgoritmoAplicado(char[] letras, int contador, char letra)
+        {
+
+            #region Valores
+            char[] arr = letras;
+            int j, i;
+            double numero1, numero2;
+            char g1;
+            letras[contador] = letra;
+            #endregion
+
+            for (i = 1; i <= contador; i++)
+            {
+                g1 = letras[i];
+                numero2 = elemento.CharToASCII(letras[i - 1]);
+                numero1 = elemento.CharToASCII(g1);
+                for (j = i; j > 0 && numero2 > numero1; j--)
+                {
+                    letras[j] = letras[j - 1];
+                }
+                letras[j] = g1;
+            }
+            return arr;
+        }
 
         public int CountSave { get; set; }
 
