@@ -11,22 +11,20 @@ namespace ArrayCharacters.Clases
 
         #region Valores
         public char Seleccion { get; set; }
-        public int Len { get; set; }
         #endregion
 
         public void ShowMenu()
         {
             Console.WriteLine("Acciones Disponibles: ");
-            Console.WriteLine("         Crear => c");
-            Console.WriteLine("         Borrar => b");
+            Console.WriteLine("         Instanciar Arreglo => c");
+            Console.WriteLine("         Limpiar Arreglo => b");
             Console.WriteLine("         Insertar Elemento => i");
-            Console.WriteLine("         Revisar Elementos => r");
+            Console.WriteLine("         Mostrar Elementos => r");
             Console.WriteLine("         Buscar Elemento => s");
             Console.WriteLine("         Eliminar Elemento => e");
             Console.WriteLine("         Modificar Elemento => m");
             Console.WriteLine("         Creditos => a");
         }
-
         public char Elemento()
         {
             try 
@@ -35,33 +33,11 @@ namespace ArrayCharacters.Clases
             }
             catch
             {
-                Seleccion = 'c';
+                Seleccion = 'r';
             }
             Console.Clear();
             return Seleccion;
         }
-
-        public int Capasidad()
-        {
-            try
-            {
-                Console.WriteLine("Asignar Tamaño de Arreglo: ");
-                Len = Convert.ToInt16(Console.ReadLine());
-            }
-            catch
-            {
-                Len = 20;
-            }
-            return Len;
-        }
-
-        public int Reset()
-        {
-            Console.WriteLine("Arreglo Limpio");
-            Len = 0;
-            return Len;
-        }
-
         public void Continue()
         {
             Console.ReadKey();

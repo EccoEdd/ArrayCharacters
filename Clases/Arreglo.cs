@@ -9,8 +9,14 @@ namespace ArrayCharacters
     internal class Arreglo
     {
         CharASCII elemento = new CharASCII();
-        Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
 
+        #region Variables
+        public char[] Letras { get; set; }
+        public int Contador { get; set; }
+        private bool Encontrado { get; set; }
+        #endregion
+
+        #region Basico
         public char ObtenerElemento()
         {
             char letra;
@@ -26,98 +32,114 @@ namespace ArrayCharacters
             }
             return letra;
         }
-        public char GuardarElemento()
+        public void DefinirArreglo()
         {
-            char letra;
-            Console.WriteLine("Insertar Elemento");
-            try
-            {
-                letra = Convert.ToChar(Console.ReadLine());
-            }
-            catch
-            {
-                letra = 'a';
-                Console.WriteLine("Default : a");
-            }
-            return letra;
+            Console.WriteLine("Arreglo Instanciado");
+            Letras = new char[20];
+            Contador = 0;
         }
-        public char[] GuardadoElemento(char[] letras, int contador, char letra)
+        public void BorrarArreglo()
+        {
+            Console.WriteLine("Arreglo Eliminado");
+            Letras = new char[0];
+            Contador = -1;
+        }
+        public void LeerArreglo()
+        {
+            if (Contador > -1)
+            {
+                for (int i = 0; i < Contador; i++)
+                    Console.WriteLine(Letras[i]);
+            }
+            else
+                Console.WriteLine("Arreglo vasio");            
+        }
+        #endregion
+
+        #region Avanzado
+        public void GuardadoElemento(char letra)
         {
             int i;
-            for (i = 0; i < contador;)
+            if (Contador < Letras.Length)
             {
-                if (elemento.CharToASCII(letra) < elemento.CharToASCII(letras[i]))
-                    break;   
-                else
-                    i++;
+                for (i = 0; i < Contador; i++)
+                    if (elemento.CharToASCII(letra) < elemento.CharToASCII(Letras[i]))
+                        break;
+
+                for (int j = Contador; j > i; j--)
+                    Letras[j] = Letras[j - 1];
+
+                Contador++;
+                Letras[i] = letra;
             }
-            for (int j = contador; j > i;)
-            {
-                letras[j] = letras[j-1];
-                j = j -1;
-            }
-            letras[i] = letra;
-            return letras;
+            else
+                Console.WriteLine("Arreglo lleno");
         }
-        public void Busqueda(char[] letras, char letra, int contador)
+        public void Busqueda(char letra)
         {
-            for(int i = 0; i < contador; )
+            int i;
+            for(i = 0; i < Contador; i++)
             {
-                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
+                if (elemento.CharToASCII(letra) == elemento.CharToASCII(Letras[i]))
                 {
                     Console.WriteLine("Elemento en indice " + i);
                     break;
                 }
-                if ((i+1) == contador)
-                    Console.WriteLine("Elemento no Encontrado");
-                i++;
             }
+            if (i == Contador)
+                Console.WriteLine("Elemento no Encontrado");
         }
-        public char[] Eliminar(char[] letras, char letra, int contador)
+        public void Eliminar(char letra)
         {
-            bool encontrado = false;
-            int pos = 0;
-            for (int i = 0; i < contador;)
+            int i;
+            Encontrado = false;
+
+            for (i = 0; i < Contador; i++)
             {
-                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
+                if (elemento.CharToASCII(letra) == elemento.CharToASCII(Letras[i]))
                 {
                     Console.WriteLine("Elemento Encontrado en indice " + i);
-                    encontrado = true;
-                    pos = i;
+                    Encontrado = true;
                     break;
                 }
-                if ((i + 1) == contador)
-                    Console.WriteLine("Elemento no Encontrado");
-                i++;
             }
-            if (encontrado)
+            if (i == Contador)
+                Console.WriteLine("Elemento no Encontrado");
+
+            if (Encontrado)
             {
-                if (contador > 0)
+                if (Contador > 0)
                 {
-                    for(int i = pos; i < contador - 1; i++)
-                    {
-                        letras[i] = letras[i + 1];
-                    }
-                    CountSave = contador - 1;
+                    for(int l = i; l < Contador - 1; l++)
+                        Letras[l] = Letras[l + 1];
+                    Contador--;
                 }
                 else
                 {
-                    letras = new char[0];
+                    Letras = new char[0];
+                    Contador = -1;
                     Console.WriteLine("Arreglo Limpio");
                 }
             }
-            return letras;
         }
+        public void Modificar()
+        {
+            Eliminar(ObtenerElemento());
+            if(Encontrado)
+                GuardadoElemento(ObtenerElemento());
+        }
+        #endregion
 
-        public char[] OrdenamientoAlgoritmico(char[] arreglo, int contador)
+        #region Algoritmos "Complejos"
+        /*public char[] OrdenamientoAlgoritmico(char[] arreglo, int contador)
         {
             char[] arreglado;
             arreglado = arreglo;
             bool flag = true;
-            for(int i = 0; i < contador && flag; i++)
+            for (int i = 0; i < contador && flag; i++)
             {
                 flag = false;
-                for(int j = 0; j < contador -i -1; j++)
+                for (int j = 0; j < contador - i - 1; j++)
                 {
                     if (elemento.CharToASCII(arreglo[j]) > elemento.CharToASCII(arreglo[j + 1]))
                     {
@@ -128,43 +150,10 @@ namespace ArrayCharacters
                     }
                 }
             }
-            
+
             return arreglado;
-        }
-
-        public void LeerArreglo(char[] arreglo, int contador)
-        {
-            for (int i = 0; i < contador; i++)
-            {
-                Console.WriteLine(arreglo[i]);
-            }
-        }
-
-        public char[] Modificar(char[] letras, int contador, char letra)
-        {
-            CountSave = contador;
-            letras = Eliminar(letras, letra, CountSave);
-            CountSave = contador - 1;
-            char el = GuardarElemento();
-            letras = GuardadoElemento(letras, CountSave, el);
-            Busqueda(letras, el, contador);
-            return letras;
-        }
-
-        public void InsertaBusqueda(char[] letras, char letra, int contador)
-        {
-            for (int i = 0; i < contador;)
-            {
-                if (elemento.CharToASCII(letra) == elemento.CharToASCII(letras[i]))
-                {
-                    Console.WriteLine("Elemento en indice " + i);
-                    break;
-                }
-                i++;
-            }
-        }
-
-        public char[] AlgoritmoAplicado(char[] letras, int contador, char letra)
+        }*/
+        /*public char[] AlgoritmoAplicado(char[] letras, int contador, char letra)
         {
 
             #region Valores
@@ -187,9 +176,8 @@ namespace ArrayCharacters
                 letras[j] = g1;
             }
             return arr;
-        }
-        public int CountSave { get; set; }
-
+        }*/
+        #endregion
     }
 }
 
