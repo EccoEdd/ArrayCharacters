@@ -12,13 +12,13 @@ namespace ArrayCharacters
         {
             #region Clases
             Arreglo ar = new Arreglo();
-            Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
             Clases.LosMinions LosMinions = new Clases.LosMinions();
+            Clases.FuncionesBasicas funciones = new Clases.FuncionesBasicas();
             #endregion
 
             #region Variables Globales
             ar.Contador = -1;
-            bool creado = true;
+            bool creado = true, creado2 = false;
             #endregion      
             do
             {
@@ -30,6 +30,7 @@ namespace ArrayCharacters
                         if (creado)
                         {
                             ar.DefinirArreglo();
+                            creado2 = true;
                             creado = false;
                         }
                         else
@@ -40,37 +41,53 @@ namespace ArrayCharacters
                     case 'b':
                         #region Borrar
                         creado = true;
+                        creado2 = false;
                         ar.BorrarArreglo();
                         funciones.Continue();
                         #endregion
                         break;
                     case 'r':
                         #region Revisar
-                        ar.LeerArreglo();
+                        if (creado2)
+                            ar.LeerArreglo();
+                        else
+                            Console.WriteLine("Arreglo no Instanciado");
                         funciones.Continue();
                         #endregion                        
                         break;
                     case 'i':
                         #region Insertar
-                        ar.GuardadoElemento(ar.ObtenerElemento());
+                        if(creado2)
+                            ar.GuardadoElemento(ar.ObtenerElemento());
+                        else
+                            Console.WriteLine("Arreglo no Instanciado");
                         funciones.Continue();                        
                         #endregion                        
                         break;               
                     case 's':
                         #region Busqueda
-                        ar.Busqueda(ar.ObtenerElemento());
+                        if(creado2)
+                            ar.Busqueda(ar.ObtenerElemento());
+                        else
+                            Console.WriteLine("Arreglo no Instanciado");
                         funciones.Continue();
                         #endregion          
                         break;                    
                     case 'e':
                         #region Eliminar
-                        ar.Eliminar(ar.ObtenerElemento());
+                        if(creado2)
+                            ar.Eliminar(ar.ObtenerElemento());
+                        else
+                            Console.WriteLine("Arreglo no Instanciado");
                         funciones.Continue();
                         #endregion                        
                         break;
                     case 'm':
                         #region Modificar
-                        ar.Modificar();
+                        if(creado2)
+                            ar.Modificar();
+                        else
+                            Console.WriteLine("Arreglo no Instanciado");
                         funciones.Continue();
                         #endregion
                         break;
