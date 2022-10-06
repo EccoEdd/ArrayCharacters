@@ -18,7 +18,7 @@ namespace ArrayCharacters
 
             #region Variables Globales
             ar.Contador = -1;
-            bool creado = true, creado2 = false;
+            bool creado = true;
             #endregion      
             do
             {
@@ -30,7 +30,6 @@ namespace ArrayCharacters
                         if (creado)
                         {
                             ar.DefinirArreglo();
-                            creado2 = true;
                             creado = false;
                         }
                         else
@@ -41,14 +40,13 @@ namespace ArrayCharacters
                     case 'b':
                         #region Borrar
                         creado = true;
-                        creado2 = false;
                         ar.BorrarArreglo();
                         funciones.Continue();
                         #endregion
                         break;
                     case 'r':
                         #region Revisar
-                        if (creado2)
+                        if (!creado)
                             ar.LeerArreglo();
                         else
                             Console.WriteLine("Arreglo no Instanciado");
@@ -57,7 +55,7 @@ namespace ArrayCharacters
                         break;
                     case 'i':
                         #region Insertar
-                        if(creado2)
+                        if(!creado)
                             ar.GuardadoElemento(ar.ObtenerElemento());
                         else
                             Console.WriteLine("Arreglo no Instanciado");
@@ -66,7 +64,7 @@ namespace ArrayCharacters
                         break;               
                     case 's':
                         #region Busqueda
-                        if(creado2)
+                        if(!creado)
                             ar.Busqueda(ar.ObtenerElemento());
                         else
                             Console.WriteLine("Arreglo no Instanciado");
@@ -75,7 +73,7 @@ namespace ArrayCharacters
                         break;                    
                     case 'e':
                         #region Eliminar
-                        if(creado2)
+                        if(!creado)
                             ar.Eliminar(ar.ObtenerElemento());
                         else
                             Console.WriteLine("Arreglo no Instanciado");
@@ -84,7 +82,7 @@ namespace ArrayCharacters
                         break;
                     case 'm':
                         #region Modificar
-                        if(creado2)
+                        if(!creado)
                             ar.Modificar();
                         else
                             Console.WriteLine("Arreglo no Instanciado");
